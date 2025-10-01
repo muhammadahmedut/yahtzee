@@ -44,11 +44,24 @@ defmodule Yahtzee do
         0
       end
 
+    large_straight_score =
+      if is_large_straight?(dice) do
+        40
+      else
+        0
+      end
+
     %{
       "Three of a kind" => three_score,
       "Four of a kind" => four_score,
-      "Full house" => full_house_score
+      "Full house" => full_house_score,
+      "Large straight" => large_straight_score
     }
+  end
+
+  defp is_large_straight?(dice) do
+    sorted = dice |> Enum.uniq() |> Enum.sort()
+    sorted == [1, 2, 3, 4, 5] or sorted == [2, 3, 4, 5, 6]
   end
 
   defp is_full_house?(dice) do

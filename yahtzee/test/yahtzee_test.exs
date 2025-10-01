@@ -1,3 +1,7 @@
+defmodule YahtzeeTest do
+  use ExUnit.Case
+  doctest Yahtzee
+
   test "Identify 'Large straight'" do
     result = Yahtzee.score_lower([2, 3, 4, 5, 6])
     assert result["Large straight"] == 40
@@ -17,6 +21,9 @@
     result = Yahtzee.score_lower([2, 3, 4, 4, 5])
     assert result["Large straight"] == 0
   end
+
+  # ...existing tests for other categories should be included here...
+end
 
 defmodule YahtzeeTest do
   use ExUnit.Case
