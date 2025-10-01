@@ -1,3 +1,34 @@
+  describe "score_lower/1 - Full house" do
+    test "Identify 'Full house' with every face" do
+      result = Yahtzee.score_lower([2, 2, 5, 5, 5])
+      assert result["Full house"] == 25
+    end
+
+    test "Identify 'Full house' with low faces" do
+      result = Yahtzee.score_lower([1, 1, 1, 2, 2])
+      assert result["Full house"] == 25
+    end
+
+    test "Identify 'Full house' with high faces" do
+      result = Yahtzee.score_lower([6, 6, 6, 3, 3])
+      assert result["Full house"] == 25
+    end
+
+    test "No 'Full house' present (four of a kind)" do
+      result = Yahtzee.score_lower([4, 4, 4, 4, 2])
+      assert result["Full house"] == 0
+    end
+
+    test "No 'Full house' present (all different)" do
+      result = Yahtzee.score_lower([1, 2, 3, 4, 5])
+      assert result["Full house"] == 0
+    end
+
+    test "No 'Full house' present (three and two, but not matching)" do
+      result = Yahtzee.score_lower([2, 2, 2, 3, 4])
+      assert result["Full house"] == 0
+    end
+  end
 defmodule YahtzeeTest do
   use ExUnit.Case
   doctest Yahtzee
