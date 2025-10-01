@@ -1,3 +1,17 @@
+  test "Identify 'Yahtzee'" do
+    result = Yahtzee.score_lower([2, 2, 2, 2, 2])
+    assert result["Yahtzee"] == 50
+  end
+
+  test "No 'Yahtzee' present (different faces)" do
+    result = Yahtzee.score_lower([2, 2, 2, 2, 3])
+    assert result["Yahtzee"] == 0
+  end
+
+  test "No 'Yahtzee' present (all different)" do
+    result = Yahtzee.score_lower([1, 2, 3, 4, 5])
+    assert result["Yahtzee"] == 0
+  end
 defmodule YahtzeeTest do
   use ExUnit.Case
   doctest Yahtzee
