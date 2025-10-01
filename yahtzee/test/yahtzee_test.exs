@@ -1,3 +1,17 @@
+  test "Identify any other combination (Chance)" do
+    result = Yahtzee.score_lower([1, 1, 2, 2, 4])
+    assert result["Chance"] == 10
+  end
+
+  test "Chance with all different faces" do
+    result = Yahtzee.score_lower([1, 2, 3, 4, 5])
+    assert result["Chance"] == 15
+  end
+
+  test "Chance with some matching faces but not a category" do
+    result = Yahtzee.score_lower([1, 1, 3, 4, 6])
+    assert result["Chance"] == 15
+  end
 defmodule YahtzeeTest do
   use ExUnit.Case
   doctest Yahtzee
