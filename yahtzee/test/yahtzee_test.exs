@@ -1,3 +1,22 @@
+  test "Identify 'Large straight'" do
+    result = Yahtzee.score_lower([2, 3, 4, 5, 6])
+    assert result["Large straight"] == 40
+  end
+
+  test "Identify 'Large straight' with 1-5" do
+    result = Yahtzee.score_lower([1, 2, 3, 4, 5])
+    assert result["Large straight"] == 40
+  end
+
+  test "No 'Large straight' present (gap in sequence)" do
+    result = Yahtzee.score_lower([1, 2, 3, 4, 6])
+    assert result["Large straight"] == 0
+  end
+
+  test "No 'Large straight' present (duplicates)" do
+    result = Yahtzee.score_lower([2, 3, 4, 4, 5])
+    assert result["Large straight"] == 0
+  end
 
 defmodule YahtzeeTest do
   use ExUnit.Case
