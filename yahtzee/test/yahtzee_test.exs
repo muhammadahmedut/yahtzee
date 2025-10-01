@@ -1,3 +1,7 @@
+defmodule YahtzeeTest do
+  use ExUnit.Case
+  doctest Yahtzee
+
   test "Identify 'Yahtzee'" do
     result = Yahtzee.score_lower([2, 2, 2, 2, 2])
     assert result["Yahtzee"] == 50
@@ -12,9 +16,6 @@
     result = Yahtzee.score_lower([1, 2, 3, 4, 5])
     assert result["Yahtzee"] == 0
   end
-defmodule YahtzeeTest do
-  use ExUnit.Case
-  doctest Yahtzee
 
   test "Identify 'Small straight'" do
     result1 = Yahtzee.score_lower([2, 3, 2, 5, 4])
@@ -32,12 +33,6 @@ defmodule YahtzeeTest do
     result = Yahtzee.score_lower([2, 3, 4, 5, 6])
     assert result["Small straight"] == 0
   end
-
-  # ...existing tests for other categories should be included here...
-end
-defmodule YahtzeeTest do
-  use ExUnit.Case
-  doctest Yahtzee
 
   test "Identify 'Large straight'" do
     result = Yahtzee.score_lower([2, 3, 4, 5, 6])
@@ -59,12 +54,6 @@ defmodule YahtzeeTest do
     assert result["Large straight"] == 0
   end
 
-  # ...existing tests for other categories should be included here...
-end
-
-defmodule YahtzeeTest do
-  use ExUnit.Case
-  doctest Yahtzee
 
   test "greets the world" do
     assert Yahtzee.hello() == :world

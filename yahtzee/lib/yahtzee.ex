@@ -58,13 +58,26 @@ defmodule Yahtzee do
         0
       end
 
+    yahtzee_score =
+      if is_yahtzee?(dice) do
+        50
+      else
+        0
+      end
+
     %{
       "Three of a kind" => three_score,
       "Four of a kind" => four_score,
       "Full house" => full_house_score,
       "Large straight" => large_straight_score,
-      "Small straight" => small_straight_score
+      "Small straight" => small_straight_score,
+      "Yahtzee" => yahtzee_score
     }
+  end
+
+  defp is_yahtzee?(dice) do
+    [h | t] = dice
+    Enum.all?(t, fn x -> x == h end)
   end
 
   defp is_small_straight?(dice) do
