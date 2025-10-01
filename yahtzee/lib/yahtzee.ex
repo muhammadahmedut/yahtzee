@@ -65,13 +65,16 @@ defmodule Yahtzee do
         0
       end
 
+    chance_score = Enum.sum(dice)
+
     %{
       "Three of a kind" => three_score,
       "Four of a kind" => four_score,
       "Full house" => full_house_score,
       "Large straight" => large_straight_score,
       "Small straight" => small_straight_score,
-      "Yahtzee" => yahtzee_score
+      "Yahtzee" => yahtzee_score,
+      "Chance" => chance_score
     }
   end
 
