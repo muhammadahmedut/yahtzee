@@ -51,12 +51,28 @@ defmodule Yahtzee do
         0
       end
 
+    small_straight_score =
+      if large_straight_score == 0 and is_small_straight?(dice) do
+        30
+      else
+        0
+      end
+
     %{
       "Three of a kind" => three_score,
       "Four of a kind" => four_score,
       "Full house" => full_house_score,
-      "Large straight" => large_straight_score
+      "Large straight" => large_straight_score,
+      "Small straight" => small_straight_score
     }
+  end
+
+  defp is_small_straight?(dice) do
+    uniq = dice |> Enum.uniq() |> Enum.sort()
+    small_straights = [
+      [1,2,3,4], [2,3,4,5], [3,4,5,6]
+    ]
+    Enum.any?(small_straights, fn seq -> seq -- uniq == [] end)
   end
 
   defp is_large_straight?(dice) do
